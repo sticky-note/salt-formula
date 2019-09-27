@@ -141,18 +141,22 @@ suites:
             - salt.pkgrepo
             - salt.master
             - salt.minion
+            - salt.formulas
       pillars:
         top.sls:
           base:
             '*':
               - salt
               - v201902-py3
+              - salt_formulas
       pillars_from_files:
         salt.sls: test/salt/pillar/salt.sls
         v201902-py3.sls: test/salt/pillar/v201902-py3.sls
+        salt_formulas.sls: test/salt/pillar/salt_formulas.sls
     verifier:
       inspec_tests:
         - path: test/integration/v201902-py3
+        - path: test/integration/salt-formulas
   - name: v201902-py2
     includes:
       - debian-9-2019-2-py2
